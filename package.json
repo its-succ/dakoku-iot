@@ -1,0 +1,29 @@
+{
+  "name": "dakoku-iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gcloud beta functions deploy subscribe --trigger-resource dakoku --trigger-event google.pubsub.topic.publish",
+    "lint": "eslint --debug **/*.js",
+    "demo": "node demo/device.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/its-succ/dakoku-iot.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/its-succ/dakoku-iot/issues"
+  },
+  "homepage": "https://github.com/its-succ/dakoku-iot#readme",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-plugin-node": "^8.0.1",
+    "jsonwebtoken": "^8.5.0",
+    "mqtt": "^2.18.8"
+  },
+  "dependencies": {}
+}

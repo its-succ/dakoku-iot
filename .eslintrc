@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["node"],
+  "rules": {
+    "no-console": "off",
+    "node/exports-style": ["error", "exports"],
+  }
+}

@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# Applications
+.brackets.json
+.python-version
+.envrc
+*.pem
