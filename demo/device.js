@@ -48,7 +48,11 @@ const settings = {
 const client = mqtt.connect(settings);
 
 /* MAIN */
-const payload = `${DEVICE_ID}-payload-test`;
+const payload = JSON.stringify({
+  cardNumber: '1234567890123456',
+  action: 'enter',
+  device: DEVICE_ID
+});
 
 // Publish "payload" to the MQTT topic. qos=1 means at least once delivery.
 // Cloud IoT Core also supports qos=0 for at most once delivery.

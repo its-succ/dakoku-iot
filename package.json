@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "gcloud beta functions deploy subscribe --trigger-resource dakoku --trigger-event google.pubsub.topic.publish",
+    "deploy": "gcloud beta functions deploy subscribe --trigger-resource dakoku --trigger-event google.pubsub.topic.publish --env-vars-file .env.yaml --region asia-northeast1",
     "lint": "eslint --debug **/*.js",
     "demo": "node demo/device.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +25,7 @@
     "jsonwebtoken": "^8.5.0",
     "mqtt": "^2.18.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@google-cloud/tasks": "^0.4.0"
+  }
 }
