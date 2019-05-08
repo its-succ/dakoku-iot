@@ -6,17 +6,22 @@
  */
 const cloudTasks = require('@google-cloud/tasks');
 
-exports.subscribe = (event, callback) => {
+exports.subscribe = (data, context, callback) => {
   // The Cloud Pub/Sub Message object.
-  const pubsubMessage = event.data;
+  const pubsubMessage = data;
 
   // We're just going to log the message to prove that
   // it worked.
-  console.log(Buffer.from(pubsubMessage.data, 'base64').toString());
+  try {
+    JSON.parse(Buffer.from(pubsubMessage.data, 'base64').toString());
+  } catch(e) {
+    // JSONが転送されてこない場合がある(なぜかeventsサブフォルダが送信されてくるが、Arduino SDKのバグかもしれない)
+    callback();
+  }
+  console.log('PAYLOAD', Buffer.from(pubsubMessage.data, 'base64').toString());
 
   const client = new cloudTasks.CloudTasksClient();
 
-  console.log('ENV', process.env);
   const parent = client.queuePath(process.env.GCP_PROJECT, process.env.FUNCTION_REGION, process.env.DAKOKU_QUEUE_DAKOKU);
 
   const task = {
@@ -36,7 +41,7 @@ exports.subscribe = (event, callback) => {
   };
 
   client.createTask(request).then(response => {
-    console.log('PUSH TASK', response);
+    // console.log('PUSH TASK', response);
     // Don't forget to call the callback.
     callback();
   });
