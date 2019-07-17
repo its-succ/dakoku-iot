@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/its-succ/dakoku-iot#readme",
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-plugin-node": "^9.1.0",
     "jsonwebtoken": "^8.5.1",
     "mqtt": "^3.0.0"
