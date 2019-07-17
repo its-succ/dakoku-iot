@@ -16,7 +16,7 @@ exports.subscribe = (data, context, callback) => {
     JSON.parse(Buffer.from(pubsubMessage.data, 'base64').toString());
   } catch(e) {
     // JSONが転送されてこない場合がある(なぜかeventsサブフォルダが送信されてくるが、Arduino SDKのバグかもしれない)
-    callback();
+    return callback();
   }
   console.log('PAYLOAD', Buffer.from(pubsubMessage.data, 'base64').toString());
 
